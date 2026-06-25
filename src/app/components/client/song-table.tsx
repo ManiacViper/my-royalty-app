@@ -10,27 +10,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-type Song = {
-  id: string;
+export type Song = {
+  id: number;
   title: string;
   author: string;
   progress: number;
 };
-export default function SongsTable() {
-  const songs = [
-    {
-      id: "123",
-      title: "some-song-name",
-      author: "some-author-name",
-      progress: 0.27,
-    },
-    {
-      id: "222",
-      title: "some-song-name-2",
-      author: "some-author-name-2",
-      progress: 0.58,
-    },
-  ];
+export default function SongsTable({ songs }: { songs: Array<Song> }) {
   const buildRows = (songs: Array<Song>) => {
     return songs.map((song) => {
       return (
