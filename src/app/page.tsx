@@ -1,4 +1,4 @@
-import SongsTable from "./components/client/song-table.tsx ../song-table.tsx ../song-table";
+import SongsTable from "./components/client/song-table";
 
 export default function Home() {
   return (

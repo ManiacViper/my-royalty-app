@@ -12,30 +12,44 @@ import {
 
 type Song = {
   id: string;
-  name: string;
+  title: string;
+  author: string;
   progress: number;
 };
 export default function SongsTable() {
-  const songs = [{ id: "123", name: "some-song-name", progress: 0.27 }];
+  const songs = [
+    {
+      id: "123",
+      title: "some-song-name",
+      author: "some-author-name",
+      progress: 0.27,
+    },
+    {
+      id: "222",
+      title: "some-song-name-2",
+      author: "some-author-name-2",
+      progress: 0.58,
+    },
+  ];
   const buildRows = (songs: Array<Song>) => {
     return songs.map((song) => {
       return (
         <TableRow key={song.id}>
-          <TableCell className="font-medium">{song.name}</TableCell>
-          <TableCell>{song.progress}</TableCell>
-          {/* <TableCell className="text-right">$250.00</TableCell> */}
+          <TableCell className="font-medium">{song.title}</TableCell>
+          <TableCell>{song.author}</TableCell>
+          <TableCell className="text-right">{song.progress}</TableCell>
         </TableRow>
       );
     });
   };
   return (
     <Table>
-      <TableCaption>Top songs</TableCaption>
+      <TableCaption>Top 100 songs in 2025</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">name</TableHead>
-          <TableHead>progress</TableHead>
-          {/* <TableHead className="text-right">Amount</TableHead> */}
+          <TableHead className="w-[100px]">Title</TableHead>
+          <TableHead>Author</TableHead>
+          <TableHead className="text-right">Progress</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>{buildRows(songs)}</TableBody>
