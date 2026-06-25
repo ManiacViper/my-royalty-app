@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import { render, screen, within } from "@testing-library/react";
 import SongsTable, { Song } from "./song-table";
 
 const mockSongs: Array<Song> = [
@@ -20,5 +21,20 @@ const mockSongs: Array<Song> = [
 describe("SongsTable Component", () => {
   it("renders correctly", () => {
     render(<SongsTable songs={mockSongs}></SongsTable>);
+
+    const rows = screen.getAllByRole("row");
+    const firstRowColumns = within(rows[1]).getAllByRole("cell");
+    const secondRowColumns = within(rows[2]).getAllByRole("cell");
+
+    expect(rows).toHaveLength(3);
+    expect(firstRowColumns[0]).toHaveTextContent(`${mockSongs[0]["title"]}`);
+    expect(firstRowColumns[1]).toHaveTextContent(`${mockSongs[0]["author"]}`);
+    expect(firstRowColumns[2]).toHaveTextContent(`${mockSongs[0]["progress"]}`);
+
+    expect(secondRowColumns[0]).toHaveTextContent(`${mockSongs[1]["title"]}`);
+    expect(secondRowColumns[1]).toHaveTextContent(`${mockSongs[1]["author"]}`);
+    expect(secondRowColumns[2]).toHaveTextContent(
+      `${mockSongs[1]["progress"]}`,
+    );
   });
 });
