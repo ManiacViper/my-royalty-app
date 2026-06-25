@@ -1,5 +1,4 @@
-import Image from "next/image";
-import SongsTable from "./components/client/song-table";
+import SongsTable from "./components/client/song-table.tsx ../song-table.tsx ../song-table";
 
 export default function Home() {
   return (
