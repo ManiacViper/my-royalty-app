@@ -1,6 +1,6 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import SongsTable from "./song-table";
 import { Song } from "../server/songs";
 
@@ -19,11 +19,14 @@ const mockSongs: Array<Song> = [
   },
 ];
 
+afterEach(() => {
+  cleanup();
+});
+
 describe("SongsTable Component", () => {
   it("renders correctly", () => {
     render(<SongsTable songs={mockSongs}></SongsTable>);
 
-    screen.debug();
     const idHeader = screen.getByRole("columnheader", { name: "ID" });
     const songNameHeader = screen.getByRole("columnheader", {
       name: "Song Name",
@@ -53,5 +56,11 @@ describe("SongsTable Component", () => {
     expect(secondRowColumns[1].textContent).toBe("Birds of a Feather");
     expect(secondRowColumns[2].textContent).toBe("Billie Eilish");
     expect(secondRowColumns[3].textContent).toBe("0%");
+  });
+
+  it("renders only header column names if passed an empty list", () => {
+    render(<SongsTable songs={[]}></SongsTable>);
+    const rows = screen.getAllByRole("row");
+    expect(rows).toHaveLength(1);
   });
 });
