@@ -21,6 +21,7 @@ export default function SongsTable({ songs }: { songs: Array<Song> }) {
     return songs.map((song) => {
       return (
         <TableRow key={song.id}>
+          <TableCell className="font-medium">{song.id}</TableCell>
           <TableCell className="font-medium">{song.title}</TableCell>
           <TableCell>{song.author}</TableCell>
           <TableCell className="text-right">

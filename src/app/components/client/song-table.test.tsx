@@ -28,12 +28,14 @@ describe("SongsTable Component", () => {
     const secondRowColumns = within(rows[2]).getAllByRole("cell");
 
     expect(rows).toHaveLength(3);
-    expect(firstRowColumns[0].textContent).toBe("Die with a Smile");
-    expect(firstRowColumns[1].textContent).toBe("Lady Gaga, Bruno Mars");
-    expect(firstRowColumns[2].textContent).toBe("56%");
+    expect(firstRowColumns[0].textContent).toBe("1");
+    expect(firstRowColumns[1].textContent).toBe("Die with a Smile");
+    expect(firstRowColumns[2].textContent).toBe("Lady Gaga, Bruno Mars");
+    expect(firstRowColumns[3].textContent).toBe("56%");
 
-    expect(secondRowColumns[0].textContent).toBe("Birds of a Feather");
-    expect(secondRowColumns[1].textContent).toBe("Billie Eilish");
-    expect(secondRowColumns[2].textContent).toBe("0%");
+    expect(secondRowColumns[0].textContent).toBe("2");
+    expect(secondRowColumns[1].textContent).toBe("Birds of a Feather");
+    expect(secondRowColumns[2].textContent).toBe("Billie Eilish");
+    expect(secondRowColumns[3].textContent).toBe("0%");
   });
 });
