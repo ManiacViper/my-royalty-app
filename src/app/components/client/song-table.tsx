@@ -36,7 +36,8 @@ export default function SongsTable({ songs }: { songs: Array<Song> }) {
       <TableCaption>Top 100 songs in 2025</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Title</TableHead>
+          <TableHead className="w-[100px]">ID</TableHead>
+          <TableHead className="w-[100px]">Song Name</TableHead>
           <TableHead>Author</TableHead>
           <TableHead className="text-right">Progress</TableHead>
         </TableRow>

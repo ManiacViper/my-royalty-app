@@ -23,11 +23,27 @@ describe("SongsTable Component", () => {
   it("renders correctly", () => {
     render(<SongsTable songs={mockSongs}></SongsTable>);
 
+    screen.debug();
+    const idHeader = screen.getByRole("columnheader", { name: "ID" });
+    const songNameHeader = screen.getByRole("columnheader", {
+      name: "Song Name",
+    });
+    const authorHeader = screen.getByRole("columnheader", { name: "Author" });
+    const progressHeader = screen.getByRole("columnheader", {
+      name: "Progress",
+    });
+
     const rows = screen.getAllByRole("row");
     const firstRowColumns = within(rows[1]).getAllByRole("cell");
     const secondRowColumns = within(rows[2]).getAllByRole("cell");
 
     expect(rows).toHaveLength(3);
+
+    expect(idHeader).toBeDefined();
+    expect(songNameHeader).toBeDefined();
+    expect(authorHeader).toBeDefined();
+    expect(progressHeader).toBeDefined();
+
     expect(firstRowColumns[0].textContent).toBe("1");
     expect(firstRowColumns[1].textContent).toBe("Die with a Smile");
     expect(firstRowColumns[2].textContent).toBe("Lady Gaga, Bruno Mars");
