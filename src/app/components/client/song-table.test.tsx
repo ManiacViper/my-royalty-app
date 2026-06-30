@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { render, screen, within } from "@testing-library/react";
-import SongsTable, { Song } from "./song-table";
+import SongsTable from "./song-table";
+import { Song } from "../server/songs";
 
 const mockSongs: Array<Song> = [
   {

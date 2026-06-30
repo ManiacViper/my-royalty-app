@@ -1,23 +1,11 @@
 import SongsTable from "./components/client/song-table";
-import { getTopSongs } from "./components/server/songs";
+import {
+  getTopSongs,
+  topSongsRelativeFilePath,
+} from "./components/server/songs";
 
 export default async function Home() {
-  // const songs = [
-  //   {
-  //     id: 1,
-  //     title: "some-song-name",
-  //     author: "some-author-name",
-  //     progress: 0.27,
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "some-song-name-2",
-  //     author: "some-author-name-2",
-  //     progress: 0.6,
-  //   },
-  // ];
-
-  const topSongs = await getTopSongs();
+  const topSongs = await getTopSongs(topSongsRelativeFilePath);
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">

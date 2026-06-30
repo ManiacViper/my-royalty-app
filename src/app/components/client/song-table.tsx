@@ -9,21 +9,23 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Song } from "../server/songs";
 
-export type Song = {
-  id: number;
-  title: string;
-  author: string;
-  progress: number;
-};
 export default function SongsTable({ songs }: { songs: Array<Song> }) {
+  const toPercentage = (progress: number) => {
+    const progressInPercentage = Math.round(progress * 100);
+    return `${progressInPercentage}%`;
+  };
+
   const buildRows = (songs: Array<Song>) => {
     return songs.map((song) => {
       return (
         <TableRow key={song.id}>
           <TableCell className="font-medium">{song.title}</TableCell>
           <TableCell>{song.author}</TableCell>
-          <TableCell className="text-right">{song.progress}</TableCell>
+          <TableCell className="text-right">
+            {toPercentage(song.progress)}
+          </TableCell>
         </TableRow>
       );
     });

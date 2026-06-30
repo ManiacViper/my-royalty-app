@@ -1,11 +1,19 @@
 import { promises as fs } from "fs";
-import { Song } from "@/app/components/client/song-table";
 
-export async function getTopSongs(): Promise<Array<Song>> {
-  const file = await fs.readFile(
-    process.cwd() + "/src/app/data/top-songs.json",
-    "utf8",
-  );
-  const data = JSON.parse(file);
+export type Song = {
+  id: number;
+  title: string;
+  author: string;
+  progress: number;
+};
+
+export type FormattedSong = Omit<Song, "progress"> & {
+  progress: string;
+};
+
+export const topSongsRelativeFilePath = "/src/app/data/top-songs.json";
+export async function getTopSongs(filePath: string): Promise<Array<Song>> {
+  const file = await fs.readFile(process.cwd() + filePath, "utf8");
+  const data: Array<Song> = JSON.parse(file);
   return data;
 }
