@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import SongsTable from "./song-table";
 import { Song } from "../server/songs";
 
@@ -34,8 +34,8 @@ describe("SongsTable Component", () => {
     });
 
     const rows = screen.getAllByRole("row");
-    const firstRowColumns = within(rows[1]).getAllByRole("cell");
-    const secondRowColumns = within(rows[2]).getAllByRole("cell");
+    const firstRowColumns = rows[1].querySelectorAll("td");
+    const secondRowColumns = rows[2].querySelectorAll("td");
 
     expect(rows).toHaveLength(3);
 
