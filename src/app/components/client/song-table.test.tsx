@@ -30,12 +30,10 @@ describe("SongsTable Component", () => {
     expect(rows).toHaveLength(3);
     expect(firstRowColumns[0]).toHaveTextContent(`${mockSongs[0]["title"]}`);
     expect(firstRowColumns[1]).toHaveTextContent(`${mockSongs[0]["author"]}`);
-    expect(firstRowColumns[2]).toHaveTextContent(`${mockSongs[0]["progress"]}`);
+    expect(firstRowColumns[2]).toHaveTextContent("56%");
 
     expect(secondRowColumns[0]).toHaveTextContent(`${mockSongs[1]["title"]}`);
     expect(secondRowColumns[1]).toHaveTextContent(`${mockSongs[1]["author"]}`);
-    expect(secondRowColumns[2]).toHaveTextContent(
-      `${mockSongs[1]["progress"]}`,
-    );
+    expect(secondRowColumns[2]).toHaveTextContent("0%");
   });
 });
