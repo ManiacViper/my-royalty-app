@@ -1,9 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { getTopSongs, topSongsRelativeFilePath } from "./songs";
+import { getTopSongs, top100SongsFilePath } from "./songs";
 
 describe("SongsTable Component", () => {
   it("renders correctly", async () => {
-    const result = await getTopSongs(topSongsRelativeFilePath);
+    const filePath = await top100SongsFilePath();
+    const result = await getTopSongs(filePath);
     expect(result.length === 100);
     expect(result[0]).toMatchObject({
       id: 1,
