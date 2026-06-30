@@ -18,9 +18,14 @@ export async function top100SongsFilePath() {
   return "/src/app/data/top-songs.json";
 }
 export async function getTopSongs(filePath: string) {
-  const file = await fs.readFile(process.cwd() + filePath, "utf8");
-  const data: Array<Song> = JSON.parse(file);
-  return data;
+  try {
+    const file = await fs.readFile(process.cwd() + filePath, "utf8");
+    const data: Array<Song> = JSON.parse(file);
+    return data;
+  } catch (error) {
+    console.log("reading top 100 songs file error", error);
+    return [];
+  }
 }
 
 export async function TopSongs() {
